@@ -6,7 +6,7 @@
 
 <%
 	request.setCharacterEncoding("utf-8");
-	
+
 	String code = null;
 	if (request.getParameter("code") != null) {
 		code = (String) request.getParameter("code");

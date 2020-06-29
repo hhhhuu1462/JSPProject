@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.io.PrintWriter"%>
+<%@ page import="user.UserDAO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +13,30 @@
 	<link rel="stylesheet" href="./css/custom.css">
 </head>
 <body>
+	<%
+		String userID = null;
+		if(session.getAttribute("userID") != null) {
+			userID = (String) session.getAttribute("userID");
+		}
+		if(userID == null) {
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('로그인을 해주세요');");
+			script.println("location.href='userLogin.jsp'");
+			script.println("</script>");
+			script.close();
+			return;
+		}
+		boolean emailChecked = new UserDAO().getUserEmailChecked(userID);
+		if(emailChecked == false) {
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("location.href='emailSendConfirm.jsp';");
+			script.println("</script>");
+			script.close();
+			return;
+		}
+	%>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="index.jsp">강의평가 웹 사이트</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
@@ -24,9 +50,18 @@
       		<li class="nav-item dropdown">
       			<a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown">회원관리</a>
       			<div class="dropdown-menu" aria-labelledby="dropdown">
-      				<a class="dropdown-item" href="./userLogin.jsp">로그인</a>
-      				<a class="dropdown-item" href="./userJoin.jsp">회원가입</a>
-      				<a class="dropdown-item" href="./userLogout.jsp">로그아웃</a>
+      				<%
+      					if(userID == null) {
+      				%>
+      					<a class="dropdown-item" href="./userLogin.jsp">로그인</a>
+      					<a class="dropdown-item" href="./userJoin.jsp">회원가입</a>
+      				<%
+      					} else {
+      				%>
+      					<a class="dropdown-item" href="./userLogoutAction.jsp">로그아웃</a>
+      				<%
+      					}
+      				%>
       			</div>
       		</li>
       	</ul> 		
@@ -192,7 +227,7 @@
 						</div>
 						<div class="form-group">
 							<label>제목</label>
-							<input type="text" name="evaluationTime" class="form-control" maxlength="30">
+							<input type="text" name="evaluationTitle" class="form-control" maxlength="30">
 						</div>
 						<div class="form-group">
 							<label>내용</label>
@@ -211,7 +246,7 @@
 							</div>
 							<div class="form-group col-sm-3">
 								<label>성적</label>
-								<select name="totalScore" class="form-control">
+								<select name="creditScore" class="form-control">
 									<option value="A" selected>A</option>
 									<option value="B">B</option>
 									<option value="C">C</option>
@@ -221,7 +256,7 @@
 							</div>
 							<div class="form-group col-sm-3">
 								<label>분위기</label>
-								<select name="totalScore" class="form-control">
+								<select name="comfortableScore" class="form-control">
 									<option value="A" selected>A</option>
 									<option value="B">B</option>
 									<option value="C">C</option>
@@ -231,7 +266,7 @@
 							</div>
 							<div class="form-group col-sm-3">
 								<label>강의</label>
-								<select name="totalScore" class="form-control">
+								<select name="lectureScore" class="form-control">
 									<option value="A" selected>A</option>
 									<option value="B">B</option>
 									<option value="C">C</option>
@@ -277,11 +312,7 @@
 			</div>
 		</div>
 	</div>
-	<footer class="bg-dark mt-4 p-5 text-center" style="color: #ffffff;">
-		Copyright &copy; 2020 이희성 All Rights Reserved.<br>
-		Address. 서울특별시 마포구 망원동 <br>
-		Tel. 010 - 2282 - 4338
-	</footer>
+	<%@ include file="footer.jsp"%>
 	<!-- 제이쿼리 자바스크립트 추가 -->
 	<script src="./js/jquery.min.js"></script>
 	<!-- popper 자바스크립트 추가 -->
