@@ -49,6 +49,9 @@
       		</li>
       		<li class="nav-item dropdown">
       			<a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown">회원관리</a>
+      		</li>
+      		<li class="nav-item dropdown">
+      			<a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown">회원관리</a>
       			<div class="dropdown-menu" aria-labelledby="dropdown">
       				<%
       					if(userID == null) {
@@ -70,7 +73,7 @@
       		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
       	</form>
       </div>
-	</nav>
+	</nav>		
 	<section class="container">
 		<form method="get" action="./index.jsp" class="form-inline mt-3">
 			<select name="lectureDivide" class="form-control mx-1 mt-2">
@@ -112,62 +115,6 @@
 				</div>
 			</div>
 		</div>		
-		<div class="card bg-light mt-3">
-			<div class="card-header bg-light">
-				<div class="row">
-					<div class="col-8 text-left">컴퓨터 &nbsp;<small>이희성</small></div>
-					<div class="col-4 text-right">
-						종합<span style="color: red;">A</span>
-					</div>
-				</div>
-			</div>
-			<div class="card-body">
-				<h5 class="card-title">
-					정말 좋은 강의!! &nbsp; <small>(2017년 가을학기)</small>
-				</h5>
-				<p class="card-text">강의 분위기 좋아요~
-				<div class="row">
-					<div class="col-9 text-left">
-						성적<span style="color: red;">A</span>
-						분위기<span style="color: red;">A</span>
-						강의<span style="color: red;">B</span>
-						<span style="color: green;">(추천: 15)</span>
-					</div>
-					<div class="col-3 text-right">
-						<a onclick="return confirm('추천하시겠습니까?')" href="./likeAction.jsp?evaluationID=">추천</a>
-						<a onclick="return confirm('삭제하시겠습니까?')" href="./deleteAction.jsp?evaluationID=">삭제</a>
-					</div>
-				</div>
-			</div>
-		</div>			
-		<div class="card bg-light mt-3">
-			<div class="card-header bg-light">
-				<div class="row">
-					<div class="col-8 text-left">컴퓨터 &nbsp;<small>이희성</small></div>
-					<div class="col-4 text-right">
-						종합<span style="color: red;">A</span>
-					</div>
-				</div>
-			</div>
-			<div class="card-body">
-				<h5 class="card-title">
-					정말 좋은 강의!! &nbsp; <small>(2017년 가을학기)</small>
-				</h5>
-				<p class="card-text">강의 분위기 좋아요~
-				<div class="row">
-					<div class="col-9 text-left">
-						성적<span style="color: red;">A</span>
-						분위기<span style="color: red;">A</span>
-						강의<span style="color: red;">B</span>
-						<span style="color: green;">(추천: 15)</span>
-					</div>
-					<div class="col-3 text-right">
-						<a onclick="return confirm('추천하시겠습니까?')" href="./likeAction.jsp?evaluationID=">추천</a>
-						<a onclick="return confirm('삭제하시겠습니까?')" href="./deleteAction.jsp?evaluationID=">삭제</a>
-					</div>
-				</div>
-			</div>
-		</div>				
 	</section>	
 	<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="modal"  aria-hidden="true">
 		<div class="modal-dialog">

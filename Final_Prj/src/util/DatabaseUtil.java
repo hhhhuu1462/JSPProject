@@ -9,7 +9,7 @@ public class DatabaseUtil {
 		try {
 			String dbURL = "jdbc:mysql://localhost:3306/LectureEvaluation";
 			String dbID = "root";
-			String dbPassword = "dlgmltjd1";
+			String dbPassword = "1234";
 
 			Class.forName("com.mysql.jdbc.Driver");
 			return DriverManager.getConnection(dbURL, dbID, dbPassword);
