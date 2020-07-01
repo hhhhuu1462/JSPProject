@@ -124,7 +124,7 @@
 				data-toggle="modal" href="#reportModal">신고하기</a>
 		</form>
 		<div >
-		<div style="float:left; display:block; padding:5px; background-color:#bbb; margin-right:5px;">
+		<div style="float:left; display:block; padding:5px; margin-right:5px;" class="bg-light ">
 	        	<h2>Documents</h2>
 	        	<ul id="documents">
 	         	   <li><a href="#" rel="Document1" title="This is the content of Document1">Document1</a></li>
