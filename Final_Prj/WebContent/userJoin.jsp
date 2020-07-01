@@ -14,6 +14,7 @@
 </head>
 <body>
 	<%
+		request.setCharacterEncoding("utf-8");
 		String userID = null;
 		if(session.getAttribute("userID") != null) {
 			userID = (String) session.getAttribute("userID");
@@ -56,8 +57,8 @@
       			</div>
       		</li>
       	</ul> 		
-      	<form class="form-inline my-2 my-lg-0">
-      		<input class="form-control mr-sm-2" type="search" placeholder="내용을 입력하세요."  aria-label="Search">
+      	<form action="./index.jsp" method="get" class="form-inline my-2 my-lg-0">
+      		<input type="text" name="search" class="form-control mr-sm-2" type="search" placeholder="내용을 입력하세요."  aria-label="Search">
       		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
       	</form>
       </div>
@@ -76,6 +77,7 @@
 				<label>이메일</label>
 				<input type="email" name="userEmail" class="form-control">
 			</div>
+			
 			<button type="submit" class="btn btn-primary">회원가입</button>
 		</form>
 	</section>		
